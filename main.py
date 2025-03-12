@@ -4,6 +4,7 @@ from camel.models import ModelFactory
 from camel.types import ModelPlatformType, ModelType
 from camel.configs import ChatGPTConfig
 from camel.agents import ChatAgent
+from camel.toolkits import MathToolkit, SearchToolkit
 
 load_dotenv()
 
@@ -24,13 +25,18 @@ agent = ChatAgent(
     system_message=sys_msg,
     model=model,
     message_window_size=10,
+    tools=[
+        *MathToolkit().get_tools(),
+        *SearchToolkit().get_tools(),
+    ],
 )
 
-user_input = 'What is the capital of the moon?'
+
+
+user_input = 'Who is Brian Sithu?'
 
 res = agent.step(user_input)
 
 print(res)
-
 
 
