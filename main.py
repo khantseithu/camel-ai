@@ -5,6 +5,8 @@ from camel.types import ModelPlatformType, ModelType
 from camel.configs import ChatGPTConfig
 from camel.agents import ChatAgent
 from camel.toolkits import MathToolkit, SearchToolkit
+from camel.messages import BaseMessage
+from camel.types import RoleType
 
 load_dotenv()
 
@@ -35,8 +37,19 @@ agent = ChatAgent(
 
 user_input = 'Who is Brian Sithu?'
 
+new_msg = BaseMessage(
+    role_name="camel user",
+    content="This is a new user message would add to agent memory",
+    role_type=RoleType.USER,
+    meta_dict={}
+)
+
+agent.record_message(new_msg)
+
 res = agent.step(user_input)
 print(res.info['tool_calls']);
+
 print(res.msgs[0].content);
 
+print("memory: ", agent.memory.get_context())
 
