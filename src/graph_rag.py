@@ -40,7 +40,7 @@ text_example = """
 CAMEL has developed a knowledge graph agent can run with Mistral AI's most
 advanced model, the Mistral Large 2. This knowledge graph agent is capable
 of extracting entities and relationships from given content and create knowledge
-graphs automaticlly.
+graphs automatically.
 """
 
 # Create an element from given text
@@ -65,12 +65,12 @@ camel_retriever = AutoRetriever(
 )
 
 # Set one user query
-query="what's the relationship between Mistral Large 2 and Mistral AI? What kind of feature does Mistral Large 2 has?"
+query="what is the new tools for building agents by openai?"
 
 # Get related content by using vector retriever
 vector_result = camel_retriever.run_vector_retriever(
     query=query,
-    contents="https://mistral.ai/news/mistral-large-2407/",
+    contents="https://techcrunch.com/2025/03/11/openai-launches-new-tools-to-help-businesses-build-ai-agents/",
 )
 
 # Show the result from vector search
@@ -78,7 +78,7 @@ print(vector_result)
 
 
 elements = uio.parse_file_or_url(
-    input_path="https://mistral.ai/news/mistral-large-2407/"
+    input_path="https://techcrunch.com/2025/03/11/openai-launches-new-tools-to-help-businesses-build-ai-agents/"
 )
 chunk_elements = uio.chunk_elements(
     chunk_type="chunk_by_title", elements=elements
