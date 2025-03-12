@@ -36,7 +36,7 @@ agent = ChatAgent(
 user_input = 'Who is Brian Sithu?'
 
 res = agent.step(user_input)
-
-print(res)
+print(res.info['tool_calls']);
+print(res.msgs[0].content);
 
 
