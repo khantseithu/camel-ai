@@ -31,11 +31,12 @@ agent = ChatAgent(
         *MathToolkit().get_tools(),
         *SearchToolkit().get_tools(),
     ],
+    output_language="korean"
 )
 
 
 
-user_input = 'Who is Brian Sithu?'
+user_input = 'What is life?'
 
 new_msg = BaseMessage(
     role_name="camel user",
@@ -45,6 +46,7 @@ new_msg = BaseMessage(
 )
 
 agent.record_message(new_msg)
+
 
 res = agent.step(user_input)
 print(res.info['tool_calls']);
